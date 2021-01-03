@@ -9,8 +9,8 @@ class ReactorTest3 {
         val error = IllegalArgumentException("error")
         val errorFlux = Flux.error<String>(error)
 
-        var source = Flux.just("success-1", "success-2")
-        source = source.concatWith(errorFlux)
+        val source = Flux.just("success-1", "success-2")
+            .concatWith(errorFlux)
 
         // 종류에 상관없이 에러가 발생하면 통과
         StepVerifier.create(source)
